@@ -67,6 +67,18 @@ create_env() {
   create_default_env
 }
 
+update_server() {
+  if [[ ${VCAP_SERVICES} == *"appdynamics"* ]] 
+  then
+    update_server_appd "$BUILD_DIR"
+  fi
+}
+
+header "Updating server file"
+update_server | output "$LOG_FILE"
+
+
+
 header "Creating runtime environment"
 create_env # can't pipe the whole thing because piping causes subshells, preventing exports
 list_node_config | output "$LOG_FILE"
