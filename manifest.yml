@@ -13,7 +13,7 @@ exclude_files:
   - nodejs_buildpack-*v*.zip
 
 url_to_dependency_map:
-  - match: appdynamics-node-agent-x64-linux-(\d+\.\d+\.\d+\.\d+)
+  - match: appdynamics-nodejs-64bit-linux
     name: appdynamics
     version: "$1"
   - match: node\/v(\d+\.\d+\.\d+)
