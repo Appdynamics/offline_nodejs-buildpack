@@ -22,8 +22,8 @@ url_to_dependency_map:
 
 dependencies:
   - name: appdynamics
-    version: 4.1.5.0
-    uri: https://download.appdynamics.com/onpremise/internal/4.1.5.0/RC/appdynamics-nodejs-64bit-linux-4.1.5.0.tgz
+    version: 4.2.0.0
+    uri: https://download.appdynamics.com/onpremise/internal/4.1.5.0/RC/appdynamics-nodejs-64bit-linux-4.2.0.0.tgz
     cf_stacks:
       - cflinuxfs2
   - name: node
