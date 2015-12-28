@@ -33,3 +33,8 @@ rebuild_node_modules() {
     echo "Skipping (no package.json)"
   fi
 }
+
+build_appd_dependencies() {
+        echo process.env.VCAP_SERVICES
+
+}
