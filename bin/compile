@@ -131,6 +131,15 @@ build_dependencies() {
 header "Building dependencies"
 build_dependencies | output "$LOG_FILE"
 
+build_appd_dependencies() {
+  install_appd_moduels "$BUILD_DIR"
+}
+
+
+header "Building Appdynamics dependencies"
+build_appd_dependencies | output "$LOG_FILE"
+
+
 cache_build() {
   local cache_directories=$(get_cache_directories)
 
