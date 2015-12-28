@@ -34,7 +34,7 @@ rebuild_node_modules() {
   fi
 }
 
-build_appd_dependencies() {
+install_appd_modules() {
         echo process.env.VCAP_SERVICES
 
 }
