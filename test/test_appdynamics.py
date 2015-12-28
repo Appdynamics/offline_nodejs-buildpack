@@ -17,7 +17,7 @@ from common.components import DownloadAssertHelper
 from common.base import BaseCompileApp
 
 
-appdynamics = utils.load_extension('extensions/appdynamics')
+appdynamics = utils.load_extension('extensions')
 
 
 class TestAppDynamics(object):
@@ -25,6 +25,7 @@ class TestAppDynamics(object):
         self.build_dir = tempfile.mkdtemp('build-')
         self.php_dir = os.path.join(self.build_dir, 'php', 'etc')
         os.makedirs(self.php_dir)
+        print "asdf"
         shutil.copy('defaults/config/php/5.5.x/php.ini', self.php_dir)
 
     def tearDown(self):
