@@ -132,7 +132,7 @@ header "Building dependencies"
 build_dependencies | output "$LOG_FILE"
 
 build_appd_dependencies() {
-  install_appd_moduels "$BUILD_DIR"
+  install_appd_modules "$BUILD_DIR"
 }
 
 
