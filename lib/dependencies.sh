@@ -37,7 +37,7 @@ rebuild_node_modules() {
 BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
 install_appd_modules() {
-        DELIMITER = "'"
+        DELIMITER = '
         VCAP_SERVICES = $DELIMITER + $VCAP_SERVICES +$DELIMITER
         echo $VCAP_SERVICES
         python $BP_DIR/lib/appdynamics_wrapper.py  $BP_DIR $VCAP_SERVICES
