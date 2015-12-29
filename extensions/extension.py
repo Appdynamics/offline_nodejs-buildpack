@@ -21,15 +21,14 @@ class AppDynamicsInstaller(object):
         self._detected = False
         self.app_name = None
         self.account_access_key = None
-        try:
-            self._log.info("Initializing")
-            self._merge_defaults()
-            self._load_service_info()
-            #self._load_php_info()
-            self._load_appdynamics_info()
-        except Exception:
-            self._log.exception("Error installing AppDynamics! "
-                                "AppDynamics will not be available.")
+        #try:
+        self._log.info("Initializing")
+        self._merge_defaults()
+        self._load_service_info()
+        #self._load_php_info()
+        self._load_appdynamics_info()
+        #except Exception:
+        #    self._log.exception("Error installing AppDynamics! ""AppDynamics will not be available.")
 
     def _merge_defaults(self):
         for key, val in DEFAULTS.iteritems():
