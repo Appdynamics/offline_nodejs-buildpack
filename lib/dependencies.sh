@@ -40,7 +40,8 @@ install_appd_modules() {
         DELIMITER="'"
         VCAP_SERVICES="$VCAP_SERVICES"
         echo $VCAP_SERVICES
-        if [ $VCAP_SERVICES -lt 2 ]; then
+        LEN=$(echo ${#VCAP_SERVICES})
+        if [ LEN -lt 2 ]; then
                 echo "doesn't have at least 2 characters"
         else
                 python $BP_DIR/lib/appdynamics_wrapper.py  $BP_DIR $VCAP_SERVICES
