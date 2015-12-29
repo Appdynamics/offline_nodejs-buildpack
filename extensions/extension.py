@@ -1,9 +1,9 @@
 import os
 import os.path
 import logging
-from cloudfoundry import CloudFoundryUtil
+#from cloudfoundry import CloudFoundryUtil
 
-#_log = logging.getLogger('appdynamics')
+_log = logging.getLogger('appdynamics')
 
 DEFAULTS = {
 'APPDYNAMICS_HOST': 'download.appdynamics.com',
@@ -15,7 +15,7 @@ DEFAULTS = {
 
 class AppDynamicsInstaller(object):
     def __init__(self, ctx):
-        _log = CloudFoundryUtil.init_logging(ctx)
+        #_log = CloudFoundryUtil.init_logging(ctx)
         self._log = _log
         self._ctx = ctx
         self._detected = False
