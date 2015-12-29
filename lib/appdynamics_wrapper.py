@@ -6,8 +6,7 @@ import os
 import os.path
 import tempfile
 import shutil
-from build_pack_utils import utils, cloudfoundry
-from cloudfoundry import CloudFoundryUtil
+from build_pack_utils.cloudfoundry import CloudFoundryUtil
 
 print 'Number of arguments:', len(sys.argv), 'arguments.'
 print 'Argument List:', str(sys.argv)
