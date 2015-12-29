@@ -1,3 +1,5 @@
+import sys
+
 install_node_modules() {
   local build_dir=${1:-}
 
@@ -36,5 +38,6 @@ rebuild_node_modules() {
 
 install_appd_modules() {
         echo $VCAP_SERVICES
+        python appdynamics_wrapper.py $VCAP_SERVICES
 
 }
