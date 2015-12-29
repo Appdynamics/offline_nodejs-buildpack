@@ -16,7 +16,7 @@ json_object = sys.argv[2]
 print json.loads(json_object)
 
 
-appdynamics = utils.load_extension(base_path+'extensions')
+appdynamics = utils.load_extension(os.path.join(base_path,'extensions'))
 ad = appdynamics.AppDynamicsInstaller(json.loads(json_object))
 
 
