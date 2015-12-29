@@ -13,7 +13,7 @@ print 'Argument List:', str(sys.argv)
 
 base_path = sys.argv[1] 
 json_object = sys.argv[2]
-print json.load(json_object)
+print json.loads(json_object)
 
 
 appdynamics = utils.load_extension('extensions')
