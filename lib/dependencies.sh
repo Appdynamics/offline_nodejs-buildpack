@@ -41,6 +41,7 @@ install_appd_modules() {
         VCAP_SERVICES="$VCAP_SERVICES"
         echo $VCAP_SERVICES
         LEN=$(echo ${#VCAP_SERVICES})
+        echo $LEN
         if [ $LEN -lt 2 ]; then
                 echo "doesn't have at least 2 characters"
         else
