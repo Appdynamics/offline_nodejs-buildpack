@@ -17,7 +17,7 @@ print json.loads(json_object)
 
 
 appdynamics = utils.load_extension('extensions')
-ad = appdynamics.AppDynamicsInstaller(json.load(json_object))
+ad = appdynamics.AppDynamicsInstaller(json.loads(json_object))
 
 
 
