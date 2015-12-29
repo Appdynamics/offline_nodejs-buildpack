@@ -6,8 +6,6 @@ import os
 import os.path
 import tempfile
 import shutil
-from nose.tools import eq_
-from nose.tools import with_setup
 from build_pack_utils import utils
 
 print 'Number of arguments:', len(sys.argv), 'arguments.'
