@@ -38,6 +38,6 @@ BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
 install_appd_modules() {
         echo $VCAP_SERVICES
-        python $BP_DIR/lib/appdynamics_wrapper.py $VCAP_SERVICES
+        python $BP_DIR/lib/appdynamics_wrapper.py  $BP_DIR $VCAP_SERVICES
 
 }
