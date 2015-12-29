@@ -25,7 +25,7 @@ class AppDynamicsInstaller(object):
             self._log.info("Initializing")
             self._merge_defaults()
             self._load_service_info()
-            self._load_php_info()
+            #self._load_php_info()
             self._load_appdynamics_info()
         except Exception:
             self._log.exception("Error installing AppDynamics! "
