@@ -3,8 +3,7 @@ import os.path
 import logging
 #from cloudfoundry import CloudFoundryUtil
 
-h = NullHandler()
-_log = logging.getLogger('appdynamics').addHandler(h)
+_log = logging.getLogger('appdynamics').addHandler(logging.NullHandler())
 
 DEFAULTS = {
 'APPDYNAMICS_HOST': 'download.appdynamics.com',
@@ -13,10 +12,6 @@ DEFAULTS = {
 'APPDYNAMICS_DOWNLOAD_URL': 'https://{APPDYNAMICS_HOST}/'
                          'onpremise/internal/4.1.5.0/RC/{APPDYNAMICS_PACKAGE}',
 }
-
-class NullHandler(logging.Handler):
-    def emit(self, record):
-        pass
 
 class AppDynamicsInstaller(object):
     def __init__(self, ctx):
