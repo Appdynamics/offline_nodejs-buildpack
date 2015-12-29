@@ -1,5 +1,3 @@
-import sys
-
 install_node_modules() {
   local build_dir=${1:-}
 
