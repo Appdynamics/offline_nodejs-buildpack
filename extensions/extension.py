@@ -127,18 +127,18 @@ class AppDynamicsInstaller(object):
 def preprocess_commands(ctx):
     print "test preprocess"
     print ctx
-    service = ctx.get('VCAP_SERVICES', {})
-    service_defs = service.get('appdynamics', [])
+    #service = ctx.get('VCAP_SERVICES', {})
+    service_defs = ctx.get('appdynamics', [])
     detected = False
     print len(service_defs)
     if len(service_defs) == 0:
        _log.info("AppDynamics services with tag appdynamics not detected.")
        _log.info("Looking for tag app-dynamics service.")
-       service_defs = service.get('app-dynamics', [])
+       service_defs = ctx.get('app-dynamics', [])
        if len(service_defs) == 0:
           _log.info("AppDynamics services with tag app-dynamics not detected.")
           _log.info("Looking for Appdynamics user-provided service.")
-          cups_service_defs = service.get('user-provided', [])
+          cups_service_defs = ctx.get('user-provided', [])
 
           if len(cups_service_defs) == 0:
              _log.info("AppDynamics services not detected.")
@@ -153,6 +153,7 @@ def preprocess_commands(ctx):
         detected = True
 
     if detected == True: 
+        print "detected"
         print os.system("ls /home/vcap//app/appdynamics/")
         print os.system("ls /home/vcap//app/php/")
         exit_code = os.system("echo preprocess_commands: AppDynamics agent configuration")
