@@ -33,8 +33,8 @@ ctx = utils.FormattedDict({
 })
 ad = appdynamics.preprocess_commands(utils.FormattedDict(json.loads(json_object)))
 print ad
-for command in ad:
-    runner.check_output(command)
+for index in xrange(0, len(ad)):
+    runner.check_output(ad[index])
 #ad = appdynamics.AppDynamicsInstaller(ctx)
 '''
 eq_(True, ad.should_install())
