@@ -43,5 +43,6 @@ eq_('@{HOME}/appdynamics/daemon.sock', ad.socket_path)
 eq_('@{HOME}/appdynamics/daemon.pid', ad.pid_path)
 
 
-ad = appdynamics.AppDynamicsInstaller(utils.FormattedDict(json.loads(json_object)))
-ad = appdynamics.AppDynamicsInstaller(json.loads(json_object))
+ad = appdynamics.preprocess_commands(utils.FormattedDict(json.loads(json_object)))
+#ad = appdynamics.AppDynamicsInstaller(utils.FormattedDict(json.loads(json_object)))
+#ad = appdynamics.AppDynamicsInstaller(json.loads(json_object))
