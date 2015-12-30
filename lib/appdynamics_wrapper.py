@@ -31,7 +31,8 @@ ctx = utils.FormattedDict({
     },
     'NODE_VM': 'node'
 })
-ad = appdynamics.AppDynamicsInstaller(ctx)
+ad = appdynamics.preprocess_commands(utils.FormattedDict(json.loads(json_object)))
+#ad = appdynamics.AppDynamicsInstaller(ctx)
 eq_(True, ad.should_install())
 
 eq_('@{HOME}/appdynamics/agent/x64/appdynamics-20121212.so', ad.appdynamics_so)
@@ -43,6 +44,5 @@ eq_('@{HOME}/appdynamics/daemon.sock', ad.socket_path)
 eq_('@{HOME}/appdynamics/daemon.pid', ad.pid_path)
 
 
-ad = appdynamics.preprocess_commands(utils.FormattedDict(json.loads(json_object)))
 #ad = appdynamics.AppDynamicsInstaller(utils.FormattedDict(json.loads(json_object)))
 #ad = appdynamics.AppDynamicsInstaller(json.loads(json_object))
