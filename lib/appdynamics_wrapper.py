@@ -32,6 +32,7 @@ ctx = utils.FormattedDict({
     'NODE_VM': 'node'
 })
 ad = appdynamics.preprocess_commands(utils.FormattedDict(json.loads(json_object)))
+print ad
 #ad = appdynamics.AppDynamicsInstaller(ctx)
 '''
 eq_(True, ad.should_install())
