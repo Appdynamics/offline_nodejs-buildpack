@@ -125,7 +125,8 @@ class AppDynamicsInstaller(object):
 
 # Extension Methods
 def preprocess_commands(ctx):
-
+    print "test preprocess"
+    print ctx
     service = ctx.get('VCAP_SERVICES', {})
     service_defs = service.get('appdynamics', [])
     detected = False
