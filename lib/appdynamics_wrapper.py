@@ -33,10 +33,15 @@ ctx = utils.FormattedDict({
 })
 ad = appdynamics.preprocess_commands(utils.FormattedDict(json.loads(json_object)))
 print ad
-#for index in xrange(0, len(ad)):
-#    runner.check_output(ad[index])
-print runner.check_output(['ls',' /'], stderr=subprocess.STDOUT)
-print runner.check_output(['ls',' /home/'])
+for index in xrange(0, len(ad)):
+    cmd = ''
+    command = ad[index]
+    for id in xrange(0,len(command)):
+        cmd += command[id]
+    os.system(cmd)
+    #runner.check_output(ad[index])
+#print runner.check_output(['ls',' /'], stderr=subprocess.STDOUT)
+#print runner.check_output(['ls',' /home/'])
 
 #ad = appdynamics.AppDynamicsInstaller(ctx)
 '''
