@@ -39,10 +39,11 @@ BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 install_appd_modules() {
         DELIMITER="'"
         python --version
-        VCAP_SERVICES="$VCAP_SERVICES"
         echo $VCAP_SERVICES
         LEN=$(echo ${#VCAP_SERVICES})
         echo $LEN
+        echo $VCAP_APPLICATION
+        
         #VCAP_SERVICES = python -c 'import json,sys;dummy_json = json.dumps($VCAP_SERVICES); print dummy_json'
         #echo $VCAP_SERVICES
         if [ $LEN -le 2 ]; then
