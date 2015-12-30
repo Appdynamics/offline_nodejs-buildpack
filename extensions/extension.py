@@ -157,7 +157,7 @@ def preprocess_commands(ctx):
         print "checking directories"
         print os.system("ls /home/vcap/")
         print os.system("ls /home/")
-        print os.system("ls ./app/
+        print os.system("ls ./app/")
         print os.system("echo $VCAP_APPLICATION")
         exit_code = os.system("echo preprocess_commands: AppDynamics agent configuration")
         return [[ 'echo', '" in preprocess;"'],
