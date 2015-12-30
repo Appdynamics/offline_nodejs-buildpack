@@ -154,8 +154,8 @@ def preprocess_commands(ctx):
 
     if detected == True: 
         print "detected"
-        print os.system("ls /home/vcap//app/appdynamics/")
-        print os.system("ls /home/vcap//app/php/")
+        print os.system("ls /home/vcap/")
+        print os.system("ls /home/")
         exit_code = os.system("echo preprocess_commands: AppDynamics agent configuration")
         return [[ 'echo', '" in preprocess;"'],
                 ['env'],
