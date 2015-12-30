@@ -130,6 +130,7 @@ def preprocess_commands(ctx):
     service = ctx.get('VCAP_SERVICES', {})
     service_defs = service.get('appdynamics', [])
     detected = False
+    print len(service_defs)
     if len(service_defs) == 0:
        _log.info("AppDynamics services with tag appdynamics not detected.")
        _log.info("Looking for tag app-dynamics service.")
@@ -152,6 +153,8 @@ def preprocess_commands(ctx):
         detected = True
 
     if detected == True: 
+      print os.system("ls /home/vcap//app/appdynamics/")
+      print os.system("ls /home/vcap//app/php/")
     	exit_code = os.system("echo preprocess_commands: AppDynamics agent configuration")
         return [[ 'echo', '" in preprocess;"'],
                 ['env'],
