@@ -3,7 +3,8 @@ import os.path
 import logging
 #from cloudfoundry import CloudFoundryUtil
 
-_log = logging.getLogger('appdynamics').addHandler(logging.NullHandler())
+_log = logging.getLogger('appdynamics')
+
 
 DEFAULTS = {
 'APPDYNAMICS_HOST': 'download.appdynamics.com',
