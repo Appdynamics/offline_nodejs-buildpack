@@ -42,8 +42,8 @@ install_appd_modules() {
         echo $VCAP_SERVICES
         LEN=$(echo ${#VCAP_SERVICES})
         echo $LEN
-        VCAP_SERVICES = python -c 'import json,sys;dummy_json = json.dumps($VCAP_SERVICES); print dummy_json'
-        echo $VCAP_SERVICES
+        #VCAP_SERVICES = python -c 'import json,sys;dummy_json = json.dumps($VCAP_SERVICES); print dummy_json'
+        #echo $VCAP_SERVICES
         if [ $LEN -le 2 ]; then
                 echo "doesn't have at least 2 characters"
         else
