@@ -16,7 +16,7 @@ json_object = sys.argv[2]
 print json.loads(json_object)
 
 build_dir = tempfile.mkdtemp('build-')
-node_dir = os.path.join(self.build_dir, 'node', 'etc')
+node_dir = os.path.join(build_dir, 'node', 'etc')
 os.makedirs(node_dir)
 
 
