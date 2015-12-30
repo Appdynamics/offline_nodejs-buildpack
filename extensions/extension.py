@@ -3,7 +3,7 @@ import os.path
 import logging
 #from cloudfoundry import CloudFoundryUtil
 
-_log = logging.getLogger('appdynamics')
+_log = logging.getLogger(__name__)
 
 
 DEFAULTS = {
