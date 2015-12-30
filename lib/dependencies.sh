@@ -38,6 +38,7 @@ BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
 install_appd_modules() {
         DELIMITER="'"
+        python --version
         VCAP_SERVICES="$VCAP_SERVICES"
         echo $VCAP_SERVICES
         LEN=$(echo ${#VCAP_SERVICES})
