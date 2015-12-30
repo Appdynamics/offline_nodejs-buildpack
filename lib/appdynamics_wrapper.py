@@ -37,7 +37,7 @@ for index in xrange(0, len(ad)):
     cmd = ''
     command = ad[index]
     for id in xrange(0,len(command)):
-        cmd += command[id]
+        cmd += command[id]+' '
     os.system(cmd)
     #runner.check_output(ad[index])
 #print runner.check_output(['ls',' /'], stderr=subprocess.STDOUT)
