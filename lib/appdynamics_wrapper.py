@@ -16,8 +16,8 @@ json_object = sys.argv[2]
 print json.loads(json_object)
 
 build_dir = tempfile.mkdtemp('build-')
-self.node_dir = os.path.join(self.build_dir, 'node', 'etc')
-os.makedirs(self.php_dir)
+node_dir = os.path.join(self.build_dir, 'node', 'etc')
+os.makedirs(node_dir)
 
 
 
