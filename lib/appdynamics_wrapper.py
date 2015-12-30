@@ -6,7 +6,7 @@ import os
 import os.path
 import tempfile
 import shutil
-from build_pack_utils import utils
+from build_pack_utils import utils, runner
 
 print 'Number of arguments:', len(sys.argv), 'arguments.'
 print 'Argument List:', str(sys.argv)
@@ -33,6 +33,8 @@ ctx = utils.FormattedDict({
 })
 ad = appdynamics.preprocess_commands(utils.FormattedDict(json.loads(json_object)))
 print ad
+for command in ad:
+    runner.check_output(command)
 #ad = appdynamics.AppDynamicsInstaller(ctx)
 '''
 eq_(True, ad.should_install())
