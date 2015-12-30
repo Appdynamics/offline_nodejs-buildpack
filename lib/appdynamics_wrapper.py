@@ -35,8 +35,8 @@ ad = appdynamics.preprocess_commands(utils.FormattedDict(json.loads(json_object)
 print ad
 #for index in xrange(0, len(ad)):
 #    runner.check_output(ad[index])
-runner.check_output(['ls',' /'])
-runner.check_output(['ls',' /home/'])
+print runner.check_output(['ls',' /'])
+print runner.check_output(['ls',' /home/'])
 
 #ad = appdynamics.AppDynamicsInstaller(ctx)
 '''
