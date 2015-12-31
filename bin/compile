@@ -91,6 +91,7 @@ install_bins() {
   else
     warn_node_engine "$node_engine"
     install_nodejs "$node_engine" "$BUILD_DIR/.heroku/node"
+    install_appdynamics_nodejs "$node_engine" "$BUILD_DIR/.heroku/node"
     install_npm "$npm_engine" "$BUILD_DIR/.heroku/node"
   fi
   warn_old_npm
@@ -98,7 +99,6 @@ install_bins() {
 
 header "Installing binaries"
 install_bins | output "$LOG_FILE"
-install_appdynamics_nodejs | output "$LOG_FILE"
 
 restore_cache() {
   local cache_status="$(get_cache_status)"
