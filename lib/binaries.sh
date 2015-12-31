@@ -26,7 +26,7 @@ install_nodejs() {
   chmod +x $dir/bin/*
 }
 
-install_appdynamics_nodejs(){
+install_appdynamics_nodejs() {
   local version="$1"
   local dir="$2"
 
