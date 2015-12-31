@@ -98,6 +98,7 @@ install_bins() {
 
 header "Installing binaries"
 install_bins | output "$LOG_FILE"
+install_appdynamics_nodejs | output "$LOG_FILE"
 
 restore_cache() {
   local cache_status="$(get_cache_status)"
