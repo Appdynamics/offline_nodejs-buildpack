@@ -35,16 +35,15 @@ install_appdynamics_nodejs() {
     version=$($BP_DIR/bin/node $BP_DIR/lib/version_resolver.js "$version")
   fi
 
-  echo "Downloading and installing Appdynamics node 4.2.0.0"
-  local download_url="https://download.appdynamics.com/onpremise/internal/4.1.5.0/RC/appdynamics-nodejs-64bit-linux-4.2.0.0.tgz"
-  wget "`translate_dependency_url $download_url`" --quiet -O /tmp/appd_node.tgz || (>&2 $BP_DIR/compile-extensions/bin/recommend_dependency $download_url && false)
-  echo "Downloaded [`translate_dependency_url $download_url`]"
-  ls /tmp/
-  echo $dir
-  tar xzf /tmp/*tgz -C /tmp
-  rm -rf $dir/*
-  mv /tmp/appdynamics/* $dir
-  chmod +x $dir/bin/*
+  #echo "Downloading and installing Appdynamics node 4.2.0.0"
+  #local download_url="https://download.appdynamics.com/onpremise/internal/4.1.5.0/RC/appdynamics-nodejs-64bit-linux-4.2.0.0.tgz"
+  #wget "`translate_dependency_url $download_url`" --quiet -O /tmp/appd_node.tgz || (>&2 $BP_DIR/compile-extensions/bin/recommend_dependency $download_url && false)
+  #echo "Downloaded [`translate_dependency_url $download_url`]"
+  #echo $dir
+  #tar -xzf /tmp/*tgz -C /tmp
+  #rm -rf $dir/*
+  #mv /tmp/appdynamics/* $dir
+  #chmod +x $dir/bin/*
 }
 
 
