@@ -67,6 +67,15 @@ create_env() {
   create_default_env
 }
 
+
+header "Updating server file"
+update_server | output "$LOG_FILE"
+
+update_server() {
+  update_server_appd "$BUILD_DIR"
+}
+
+
 header "Creating runtime environment"
 create_env # can't pipe the whole thing because piping causes subshells, preventing exports
 list_node_config | output "$LOG_FILE"
