@@ -153,8 +153,17 @@ def preprocess_commands(ctx):
         detected = True
 
     if detected == True: 
+        mylist = ["require("appdynamics").profile({", "controllerHostName: '<controller host name>',","controllerPort: <controller port number>, ","controllerSslEnabled: false,  // Set to true if controllerPort is SSL","accountName: '<AppDynamics_account_name>',","accountAccessKey: '<AppDynamics_account_key>', //required","applicationName: 'your_app_name',","tierName: 'choose_a_tier_name', ","nodeName: 'choose_a_node_name', ","});"]
+        f = open("init_server.js", "w")
+        os.system("pwd")
+        f.write("\n".join(map(lambda x: str(x), mylist)))
+        f.close()
         print os.system("echo $VCAP_APPLICATION")
         exit_code = os.system("echo preprocess_commands: AppDynamics agent configuration")
+        
+        
+        
+        
         return [[ 'echo', '" in preprocess;"'],
                 ['env'],
                 [ 'chmod', ' -R 755 /home/vcap/app'],
