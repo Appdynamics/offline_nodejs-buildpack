@@ -43,7 +43,7 @@ install_appd_modules() {
         echo $VCAP_SERVICES
         LEN=$(echo ${#VCAP_SERVICES})
         echo $LEN
-        TEST_DATA = "require('appdynamics').profile({controllerHostName: '52.33.129.11',controllerPort: 8090,accountName: 'customer1',accountAccessKey: 'e47c0e60-6e7d-41ad-8c64-0ae0d2f6708b',applicationName: 'nodeApp_dev',tierName: 'test',nodeName: 'process'});"
+        local TEST_DATA = "require('appdynamics').profile({controllerHostName: '52.33.129.11',controllerPort: 8090,accountName: 'customer1',accountAccessKey: 'e47c0e60-6e7d-41ad-8c64-0ae0d2f6708b',applicationName: 'nodeApp_dev',tierName: 'test',nodeName: 'process'});"
         echo $VCAP_APPLICATION
         echo -e $TEST_DATA | cat - $build_dir/server.js >  cat - $build_dir/server.js
         echo $build_dir
