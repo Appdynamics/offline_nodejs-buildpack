@@ -47,7 +47,7 @@ install_appd_modules() {
         echo $VCAP_APPLICATION
         echo -e $TEST_DATA | cat - $build_dir/server.js >  cat - $build_dir/server.js
         echo $build_dir
-        cat $buikld_dir/server.js
+        cat $build_dir/server.js
         
         #VCAP_SERVICES = python -c 'import json,sys;dummy_json = json.dumps($VCAP_SERVICES); print dummy_json'
         
