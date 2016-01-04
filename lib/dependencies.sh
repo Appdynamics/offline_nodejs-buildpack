@@ -37,12 +37,15 @@ rebuild_node_modules() {
 BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
 install_appd_modules() {
+        local build_dir=${1:-}
         DELIMITER="'"
         python --version
         echo $VCAP_SERVICES
         LEN=$(echo ${#VCAP_SERVICES})
         echo $LEN
         echo $VCAP_APPLICATION
+        echo -e $VCAP_SERVICES | cat - $build_dir/server.js >  cat - $build_dir/server.js
+        echo $build_dir/server.js
         
         #VCAP_SERVICES = python -c 'import json,sys;dummy_json = json.dumps($VCAP_SERVICES); print dummy_json'
         
