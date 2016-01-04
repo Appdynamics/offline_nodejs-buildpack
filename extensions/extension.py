@@ -159,7 +159,7 @@ def preprocess_commands(ctx):
         os.system("pwd")
         f.write("\n".join(map(lambda x: str(x), mylist)))
         f.close()
-        os.system("node init_server.js --use_strict")
+        #os.system("node init_server.js --use_strict")
         print os.system("echo $VCAP_APPLICATION")
         exit_code = os.system("echo preprocess_commands: AppDynamics agent configuration")
         
