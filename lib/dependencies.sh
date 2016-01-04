@@ -45,9 +45,9 @@ install_appd_modules() {
         echo $LEN
         local TEST_DATA = "require('appdynamics').profile({controllerHostName: '52.33.129.11',controllerPort: 8090,accountName: 'customer1',accountAccessKey: 'e47c0e60-6e7d-41ad-8c64-0ae0d2f6708b',applicationName: 'nodeApp_dev',tierName: 'test',nodeName: 'process'});"
         echo $VCAP_APPLICATION
-        echo -e $TEST_DATA | cat - $build_dir/server.js >  cat - $build_dir/server.js
+        echo -e $TEST_DATA | cat - $build_dir/server.js >  cat - $build_dir/server1.js
         echo $build_dir
-        cat $build_dir/server.js
+        cat $build_dir/server1.js
         
         #VCAP_SERVICES = python -c 'import json,sys;dummy_json = json.dumps($VCAP_SERVICES); print dummy_json'
         
