@@ -68,12 +68,14 @@ create_env() {
 }
 
 
-header "Updating server file"
-update_server | output "$LOG_FILE"
-
 update_server() {
   update_server_appd "$BUILD_DIR"
 }
+
+
+header "Updating server file"
+update_server | output "$LOG_FILE"
+
 
 
 header "Creating runtime environment"
