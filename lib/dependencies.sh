@@ -39,7 +39,8 @@ BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 update_server_appd() {
   local build_dir=${1:-}
   cat $build_dir/server.js
-  local TEST_DATA="require('appdynamics').profile({controllerHostName: '52.33.129.11',controllerPort: 8090,accountName: 'customer1',accountAccessKey: 'e47c0e60-6e7d-41ad-8c64-0ae0d2f6708b',applicationName: 'nodeApp_dev',tierName: 'test',nodeName: 'process'});"
+  #local TEST_DATA="require('appdynamics').profile({controllerHostName: '52.33.129.11',controllerPort: 8090,accountName: 'customer1',accountAccessKey: 'e47c0e60-6e7d-41ad-8c64-0ae0d2f6708b',applicationName: 'nodeApp_dev',tierName: 'test',nodeName: 'process'});"
+  local TEST_DATA=$((python $BP_DIR/extensions/appdynamics/extension.py) 2> &1)
   echo $TEST_DATA
   echo $TEST_DATA | cat - $build_dir/server.js >  $build_dir/tmp.js && mv $build_dir/tmp.js $build_dir/server.js
   echo $build_dir
