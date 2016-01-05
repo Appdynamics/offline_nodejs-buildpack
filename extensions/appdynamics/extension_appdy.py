@@ -8,9 +8,6 @@ import logging
 #print 'Number of arguments:', len(sys.argv), 'arguments.'
 #print 'Argument List:', str(sys.argv)
 
-
-
-
 VCAP_SERVICES = ''
 VCAP_APPLICATION = ''
 
@@ -29,6 +26,7 @@ def get_vcap_args():
 
 
 def generate_appdy_statement():
+    get_vcap_args()
     print "testing\n"
     print VCAP_SERVICES
     print "testing1\n"
@@ -49,7 +47,6 @@ def generate_appdy_statement():
 
     print require_statement
     '''
-get_vcap_args()
 generate_appdy_statement()
 
 '''
