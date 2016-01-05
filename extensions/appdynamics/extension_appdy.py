@@ -23,6 +23,9 @@ def get_vcap_args():
 
     with open(vcap_application_filename) as data_file:
         VCAP_APPLICATION = json.load(data_file)
+    print VCAP_SERVICES
+    print VCAP_APPLICATION
+    print "asdf\n\n"
 
 
 def generate_appdy_statement():
