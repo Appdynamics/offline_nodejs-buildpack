@@ -13,19 +13,11 @@ exclude_files:
   - nodejs_buildpack-*v*.zip
 
 url_to_dependency_map:
-  - match: appdynamics-nodejs-64bit-linux-(\d+\.\d+\.\d+\.\d+)
-    name: appdynamics
-    version: "$1"
   - match: node\/v(\d+\.\d+\.\d+)
     name: node
     version: $1
 
 dependencies:
-  - name: appdynamics
-    version: 4.2.0.0
-    uri: https://download.appdynamics.com/onpremise/internal/4.1.5.0/RC/appdynamics-nodejs-64bit-linux-4.2.0.0.tgz
-    cf_stacks:
-      - cflinuxfs2
   - name: node
     version: 0.10.40
     uri: https://pivotal-buildpacks.s3.amazonaws.com/node/beta-binaries/node-0.10.40-linux-x64.tar.gz
