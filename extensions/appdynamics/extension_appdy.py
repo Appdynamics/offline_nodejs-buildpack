@@ -1,7 +1,7 @@
 import os
 import os.path
 import logging
-from build_pack_utils import utils, runner
+#from build_pack_utils import utils, runner
 
 print 'Number of arguments:', len(sys.argv), 'arguments.'
 print 'Argument List:', str(sys.argv)
