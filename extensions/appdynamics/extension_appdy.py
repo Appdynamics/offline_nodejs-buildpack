@@ -16,7 +16,10 @@ def get_vcap_args():
     vcap_services_filename = "_vcap_services.txt"
     vcap_application_filename = "_vcap_application.txt"
     vcap_services_filename = os.path.join(build_dir, vcap_services_filename)
-    vcap_services_filename = os.path.join(build_dir, vcap_application_filename)
+    vcap_application_filename = os.path.join(build_dir, vcap_application_filename)
+    
+    print vcap_services_filename
+    print vcap_application_filename
     
     with open(vcap_services_filename) as data_file:
         VCAP_SERVICES = json.load(data_file)
