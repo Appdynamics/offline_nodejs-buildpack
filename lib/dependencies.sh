@@ -38,6 +38,7 @@ BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
 update_server_appd() {
   local build_dir=${1:-}
+  echo $VCAP_SERVICES
   LEN=$(echo ${#VCAP_SERVICES})
   if [ $LEN -ge 4 ]; then
     echo "Reading Environment Variables for Appdynamics"
