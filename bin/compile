@@ -67,11 +67,9 @@ create_env() {
   create_default_env
 }
 
-
 update_server() {
   update_server_appd "$BUILD_DIR"
 }
-
 
 header "Updating server file"
 update_server | output "$LOG_FILE"
@@ -144,13 +142,13 @@ build_dependencies() {
 header "Building dependencies"
 build_dependencies | output "$LOG_FILE"
 
-build_appd_dependencies() {
-  install_appd_modules "$BUILD_DIR"
-}
+#build_appd_dependencies() {
+#  install_appd_modules "$BUILD_DIR"
+#}
 
 
-header "Building Appdynamics dependencies"
-build_appd_dependencies | output "$LOG_FILE"
+#header "Building Appdynamics dependencies"
+#build_appd_dependencies | output "$LOG_FILE"
 
 
 cache_build() {
