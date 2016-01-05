@@ -9,12 +9,13 @@ import logging
 #print 'Argument List:', str(sys.argv)
 
 
-build_dir = sys.argv[1]
+
 
 VCAP_SERVICES = ''
 VCAP_APPLICATION = ''
 
 def get_vcap_args():
+    build_dir = sys.argv[1]
     vcap_services_filename = "_vcap_services.txt"
     vcap_application_filename = "_vcap_application.txt"
     vcap_services_filename = os.path.join(build_dir, vcap_services_filename)
