@@ -48,7 +48,8 @@ def generate_appdy_statement():
 
     print require_statement
     '''
-
+get_vcap_args()
+generate_appdy_statement()
 
 '''
 VCAP_SERVICES = json.loads(sys.argv[1])
