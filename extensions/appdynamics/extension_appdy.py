@@ -6,8 +6,8 @@ from build_pack_utils import utils, runner
 print 'Number of arguments:', len(sys.argv), 'arguments.'
 print 'Argument List:', str(sys.argv)
 
-VCAP_SERVICES = utils.FormattedDict(json.loads(sys.argv[1]))
-VCAP_APPLICATION = utils.FormattedDict(json.loads(sys.argv[2]))
+VCAP_SERVICES = json.loads(sys.argv[1])
+VCAP_APPLICATION = json.loads(sys.argv[2])
 
 print VCAP_SERVICES
 print VCAP_APPLICATION
