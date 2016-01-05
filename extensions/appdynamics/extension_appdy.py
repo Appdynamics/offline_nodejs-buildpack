@@ -8,8 +8,6 @@ import logging
 #print 'Number of arguments:', len(sys.argv), 'arguments.'
 #print 'Argument List:', str(sys.argv)
 
-VCAP_SERVICES = ''
-VCAP_APPLICATION = ''
 
 def get_vcap_args():
     build_dir = sys.argv[1]
@@ -19,6 +17,7 @@ def get_vcap_args():
     vcap_application_filename = os.path.join(build_dir, vcap_application_filename)
     
     print vcap_services_filename
+    print "\n"
     print vcap_application_filename
     
     with open(vcap_services_filename) as data_file:
@@ -27,12 +26,13 @@ def get_vcap_args():
     with open(vcap_application_filename) as data_file:
         VCAP_APPLICATION = json.load(data_file)
     print VCAP_SERVICES
+    print "\n"
     print VCAP_APPLICATION
-    print "asdf\n\n"
+    return VCAP_SERVICES, VCAP_APPLICATION
 
 
 def generate_appdy_statement():
-    get_vcap_args()
+    VCAP_SERVICES, VCAP_APPLICATION = get_vcap_args()
     print "testing\n"
     print VCAP_SERVICES
     print "testing1\n"
