@@ -42,8 +42,8 @@ update_server_appd() {
   echo $VCAP_APPLICATION
   LEN=$(echo ${#VCAP_SERVICES})
   echo $LEN
-  if [ $LEN -le 2 ]; then
-    return
+  #if [ $LEN -le 2 ]; then
+  #  return
   cat $build_dir/server.js
   local TEST_DATA="require('appdynamics').profile({controllerHostName: '52.33.129.11',controllerPort: 8090,accountName: 'customer1',accountAccessKey: 'e47c0e60-6e7d-41ad-8c64-0ae0d2f6708b',applicationName: 'nodeApp_dev',tierName: 'test',nodeName: 'process'});"
   #local TEST_DATA=$(python $BP_DIR/extensions/appdynamics/extension.py)
