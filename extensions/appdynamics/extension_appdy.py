@@ -5,9 +5,57 @@ import os.path
 import logging
 #from build_pack_utils import utils, runner
 
-print 'Number of arguments:', len(sys.argv), 'arguments.'
-print 'Argument List:', str(sys.argv)
+#print 'Number of arguments:', len(sys.argv), 'arguments.'
+#print 'Argument List:', str(sys.argv)
 
+
+build_dir = sys.argv[1]
+
+def get_vcap_args():
+    vcap_services_filename = "_vcap_services.txt"
+    vcap_application_filename = "_vcap_application.txt"
+    vcap_services_filename = os.path.join(build_dir, vcap_services_filename)
+    vcap_services_filename = os.path.join(build_dir, vcap_application_filename)
+    
+    with open(vcap_services_filename) as data_file:
+        VCAP_SERVICES = json.load(data_file)
+
+    with open(vcap_application_filename) as data_file:
+        VCAP_APPLICATION = json.load(data_file)
+    
+    return VCAP_SERVICES, VCAP_APPLICATION
+
+VCAP_SERVICES, VCAP_APPLICATION = get_vcap_args(build_dir)
+
+require("appdynamics").profile({
+ controllerHostName: '52.33.129.11',
+ controllerPort: 8090,
+   accountName: 'customer1',
+ accountAccessKey: 'e47c0e60-6e7d-41ad-8c64-0ae0d2f6708b',
+ applicationName: 'nodeApp_dev',
+ tierName: 'test',
+ nodeName: 'process' // The controller will automatically append the node name with a unique number
+});
+
+
+def generate_appdy_statement():
+    extension_name = "appdynamics"
+    controllerHostName = VCAP_SERVICES["appdynamics"][0]["credentials"]["host-name"]
+    controllerPort = VCAP_SERVICES["appdynamics"][0]["credentials"]["port"]
+    accountName = VCAP_SERVICES["appdynamics"][0]["credentials"]["account-name"]
+    accountAccessKey = VCAP_SERVICES["appdynamics"][0]["credentials"]["account-access-key"]
+    applicationName = VCAP_APPLICATION["name"]
+    tierName = "test"
+    nodeName = "process"
+    
+    require_statement = """require('%s').profile({ controllerHostName: 
+        '%s',controllerPort: %s, accountName: '%s', accountAccessKey: '%s', 
+        applicationName: '%s',tierName: '%s',nodeName: '%s'});""" % (extension_name, controllerHostName, controllerPort, accountName, accountAccessKey, applicationName, tierName, nodeName)
+
+    print require_statement
+
+
+'''
 VCAP_SERVICES = json.loads(sys.argv[1])
 VCAP_APPLICATION = json.loads(sys.argv[2])
 
@@ -28,7 +76,7 @@ def preprocess_commands():
     print len(application_defs)
     print application_defs
     
-    '''
+    
     if len(service_defs) == 0:
        _log.info("AppDynamics services with tag appdynamics not detected.")
        _log.info("Looking for tag app-dynamics service.")
