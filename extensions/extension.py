@@ -153,14 +153,14 @@ def preprocess_commands(ctx):
         detected = True
 
     if detected == True: 
-        mylist = ["require('appdynamics').profile({","controllerHostName: '52.33.129.11',","controllerPort: 8090,","accountName: 'customer1',","accountAccessKey: 'e47c0e60-6e7d-41ad-8c64-0ae0d2f6708b',","applicationName: 'nodejs_test2',","tierName: 'test',","nodeName: 'process'","});"]
+        #mylist = ["require('appdynamics').profile({","controllerHostName: '52.33.129.11',","controllerPort: 8090,","accountName: 'customer1',","accountAccessKey: 'e47c0e60-6e7d-41ad-8c64-0ae0d2f6708b',","applicationName: 'nodejs_test2',","tierName: 'test',","nodeName: 'process'","});"]
         #mylist = ["require("appdynamics").profile({", "controllerHostName: '<controller host name>',","controllerPort: <controller port number>, ","controllerSslEnabled: false,  // Set to true if controllerPort is SSL","accountName: '<AppDynamics_account_name>',","accountAccessKey: '<AppDynamics_account_key>', //required","applicationName: 'your_app_name',","tierName: 'choose_a_tier_name', ","nodeName: 'choose_a_node_name', ","});"]
-        f = open("init_server.js", "w")
-        os.system("pwd")
-        f.write("\n".join(map(lambda x: str(x), mylist)))
-        f.close()
+        #f = open("init_server.js", "w")
+        #os.system("pwd")
+        #f.write("\n".join(map(lambda x: str(x), mylist)))
+        #f.close()
         #os.system("node init_server.js --use_strict")
-        print os.system("echo $VCAP_APPLICATION")
+        #print os.system("echo $VCAP_APPLICATION")
         exit_code = os.system("echo preprocess_commands: AppDynamics agent configuration")
         
         return [[ 'echo', '" in preprocess;"'],
