@@ -38,16 +38,12 @@ BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
 update_server_appd() {
   local build_dir=${1:-}
-  echo $VCAP_SERVICES
   LEN=$(echo ${#VCAP_SERVICES})
   if [ $LEN -ge 4 ]; then
     echo "Reading Environment Variables for Appdynamics"
-    cat $build_dir/server.js
     echo $VCAP_SERVICES > $build_dir/_vcap_services.txt
     echo $VCAP_APPLICATION > $build_dir/_vcap_application.txt
     local TEST_DATA=$(python $BP_DIR/extensions/appdynamics/extension_appdy.py $build_dir)
     echo $TEST_DATA | cat - $build_dir/server.js >  $build_dir/tmp.js && mv $build_dir/tmp.js $build_dir/server.js
-    echo $build_dir
-    cat $build_dir/server.js
   fi
 }
