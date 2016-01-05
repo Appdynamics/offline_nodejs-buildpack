@@ -19,7 +19,7 @@ class Appdynamics_ext:
             self.VCAP_APPLICATION = json.load(data_file)
     
     def generate_appdy_statement(self):
-        get_vcap_args()
+        self.get_vcap_args()
     
         extension_name = "appdynamics"
         controllerHostName = self.VCAP_SERVICES["appdynamics"][0]["credentials"]["host-name"]
