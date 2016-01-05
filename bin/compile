@@ -104,6 +104,7 @@ install_bins() {
     install_nodejs "$node_engine" "$BUILD_DIR/.heroku/node"
     install_appdynamics_nodejs "$node_engine" "$BUILD_DIR/.appdynamics/node"
     install_npm "$npm_engine" "$BUILD_DIR/.heroku/node"
+    install_appdynamics "npm_engine"
   fi
   warn_old_npm
 }
