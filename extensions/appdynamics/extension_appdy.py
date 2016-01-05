@@ -1,136 +1,32 @@
 import os
 import os.path
 import logging
-#from cloudfoundry import CloudFoundryUtil
+from build_pack_utils import utils, runner
 
-_log = logging.getLogger(__name__)
+print 'Number of arguments:', len(sys.argv), 'arguments.'
+print 'Argument List:', str(sys.argv)
 
+VCAP_SERVICES = utils.FormattedDict(json.loads(sys.argv[1])
+VCAP_APPLICATION = utils.FormattedDict(json.loads(sys.argv[2])
 
-DEFAULTS = {
-'APPDYNAMICS_HOST': 'download.appdynamics.com',
-'APPDYNAMICS_VERSION': '4.2.0.0',
-'APPDYNAMICS_PACKAGE': 'appdynamics-nodejs-64bit-linux-{APPDYNAMICS_VERSION}.tgz',
-'APPDYNAMICS_DOWNLOAD_URL': 'https://{APPDYNAMICS_HOST}/'
-                         'onpremise/internal/4.1.5.0/RC/{APPDYNAMICS_PACKAGE}',
-}
+print VCAP_SERVICES
+print VCAP_APPLICATION
 
-class AppDynamicsInstaller(object):
-    def __init__(self, ctx):
-        #_log = CloudFoundryUtil.init_logging(ctx)
-        self._log = _log
-        self._ctx = ctx
-        self._detected = False
-        self.app_name = None
-        self.account_access_key = None
-        #try:
-        self._log.info("Initializing")
-        self._merge_defaults()
-        self._load_service_info()
-        #self._load_php_info()
-        self._load_appdynamics_info()
-        #except Exception:
-        #    self._log.exception("Error installing AppDynamics! ""AppDynamics will not be available.")
-
-    def _merge_defaults(self):
-        for key, val in DEFAULTS.iteritems():
-            if key not in self._ctx:
-                self._ctx[key] = val
-
-    def _load_service_info(self):
-        self._log.info("Loading AppDynamics service info.")
-        services = self._ctx.get('VCAP_SERVICES', {})
-        service_defs = services.get('appdynamics', [])
-        if len(service_defs) == 0:
-            self._log.info("AppDynamics services with tag appdynamics not detected.")
-            self._log.info("Looking for tag app-dynamics service.")
-            service_defs = services.get('app-dynamics', [])
-            if len(service_defs) == 0:
-               self._log.info("AppDynamics services with tag app-dynamics not detected.")
-               self._log.info("Looking for Appdynamics user-provided service.")
-               service_defs = services.get('user-provided', [])
-               if len(service_defs) == 0:
-                   self._log.info("AppDynamics services not detected.")
-        if len(service_defs) > 1:
-            self._log.warn("Multiple AppDynamics services found, "
-                           "credentials from first one.")
-        if len(service_defs) > 0:
-            service = service_defs[0]
-            creds = service.get('credentials', {})
-            self.account_access_key = creds.get('account-access-key', None)
-            if self.account_access_key:
-                self._log.debug("AppDynamics service detected.")
-                self._detected = True
-
-    def _load_appdynamics_info(self):
-        vcap_app = self._ctx.get('VCAP_APPLICATION', {})
-        self.app_name = vcap_app.get('name', None)
-        self._log.debug("App Name [%s]", self.app_name)
-
-        if 'APPDYNAMICS_LICENSE' in self._ctx.keys():
-            if self._detected:
-                self._log.warn("Detected a AppDynamics Service & Manual Key,"
-                               " using the manual key.")
-            self.license_key = self._ctx['APPDYNAMICS_LICENSE']
-            self._detected = True
-
-        if self._detected:
-            appdynamics_so_name = 'appdynamics-%s%s.so' % (
-                self._php_api, (self._php_zts and 'zts' or ''))
-            self.appdynamics_so = os.path.join('@{HOME}', 'appdynamics',
-                                            'agent', self._php_arch,
-                                            appdynamics_so_name)
-            self._log.debug("NODEJS Extension [%s]", self.appdynamics_so)
-            self.log_path = os.path.join('@{HOME}', 'logs',
-                                         'appdynamics-daemon.log')
-            self._log.debug("Log Path [%s]", self.log_path)
-            self.daemon_path = os.path.join(
-                '@{HOME}', 'appdynamics', 'daemon',
-                'appdynamics-daemon.%s' % self._php_arch)
-            self._log.debug("Daemon [%s]", self.daemon_path)
-            self.socket_path = os.path.join('@{HOME}', 'appdynamics',
-                                            'daemon.sock')
-            self._log.debug("Socket [%s]", self.socket_path)
-            self.pid_path = os.path.join('@{HOME}', 'appdynamics',
-                                         'daemon.pid')
-            self._log.debug("Pid File [%s]", self.pid_path)
-
-    '''
-    def _load_php_info(self):
-        self.php_ini_path = os.path.join(self._ctx['BUILD_DIR'],
-                                         'php', 'etc', 'php.ini')
-        self._php_extn_dir = self._find_php_extn_dir()
-        self._php_api, self._php_zts = self._parse_php_api()
-        self._php_arch = self._ctx.get('APPDYNAMICS_ARCH', 'x64')
-        self._log.debug("PHP API [%s] Arch [%s]",
-                        self._php_api, self._php_arch)
-    '''
-
-    def _find_php_extn_dir(self):
-        with open(self.php_ini_path, 'rt') as php_ini:
-            for line in php_ini.readlines():
-                if line.startswith('extension_dir'):
-                    (key, val) = line.strip().split(' = ')
-                    return val.strip('"')
-
-    '''
-    def _parse_php_api(self):
-        tmp = os.path.basename(self._php_extn_dir)
-        php_api = tmp.split('-')[-1]
-        php_zts = (tmp.find('non-zts') == -1)
-        return php_api, php_zts
-    '''
-
-    def should_install(self):
-        return self._detected
+preprocess_commands()
 
 # Extension Methods
-def preprocess_commands(ctx):
+def preprocess_commands():
     print "test preprocess"
-    print ctx
     #service = ctx.get('VCAP_SERVICES', {})
-    service_defs = ctx.get('appdynamics', [])
+    service_defs = VCAP_SERVICES.get('appdynamics', [])
+    application_defs = VCAP_APPLICATION.get('limits', [])
     detected = False
+    print service_defs
     print len(service_defs)
+    print len(application_defs)
+    print application_defs
+    
+    '''
     if len(service_defs) == 0:
        _log.info("AppDynamics services with tag appdynamics not detected.")
        _log.info("Looking for tag app-dynamics service.")
@@ -184,18 +80,4 @@ def preprocess_commands(ctx):
                 ['env']]
     else:
         return ()
-
-def service_commands(ctx):
-    return {}
-
-
-def service_environment(ctx):
-    return {}
-
-def compile(install):
-    appdynamics = AppDynamicsInstaller(install.builder._ctx)
-    if appdynamics.should_install():
-        _log.info("Installing AppDynamics")
-        install.package('APPDYNAMICS')
-        _log.info("AppDynamics Installed.")
-    return 0
+    '''
