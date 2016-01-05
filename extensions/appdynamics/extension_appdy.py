@@ -43,7 +43,7 @@ def generate_appdy_statement():
     print require_statement
 
 
-VCAP_SERVICES, VCAP_APPLICATION = get_vcap_args(build_dir)
+VCAP_SERVICES, VCAP_APPLICATION = get_vcap_args()
 generate_appdy_statement()
 
 
