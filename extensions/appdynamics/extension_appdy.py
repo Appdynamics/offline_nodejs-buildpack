@@ -25,18 +25,6 @@ def get_vcap_args():
     
     return VCAP_SERVICES, VCAP_APPLICATION
 
-VCAP_SERVICES, VCAP_APPLICATION = get_vcap_args(build_dir)
-
-require("appdynamics").profile({
- controllerHostName: '52.33.129.11',
- controllerPort: 8090,
-   accountName: 'customer1',
- accountAccessKey: 'e47c0e60-6e7d-41ad-8c64-0ae0d2f6708b',
- applicationName: 'nodeApp_dev',
- tierName: 'test',
- nodeName: 'process' // The controller will automatically append the node name with a unique number
-});
-
 
 def generate_appdy_statement():
     extension_name = "appdynamics"
@@ -53,6 +41,10 @@ def generate_appdy_statement():
         applicationName: '%s',tierName: '%s',nodeName: '%s'});""" % (extension_name, controllerHostName, controllerPort, accountName, accountAccessKey, applicationName, tierName, nodeName)
 
     print require_statement
+
+
+VCAP_SERVICES, VCAP_APPLICATION = get_vcap_args(build_dir)
+generate_appdy_statement()
 
 
 '''
