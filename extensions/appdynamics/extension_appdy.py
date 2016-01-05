@@ -16,28 +16,17 @@ def get_vcap_args():
     vcap_services_filename = os.path.join(build_dir, vcap_services_filename)
     vcap_application_filename = os.path.join(build_dir, vcap_application_filename)
     
-    print vcap_services_filename
-    print "\n"
-    print vcap_application_filename
-    
     with open(vcap_services_filename) as data_file:
         VCAP_SERVICES = json.load(data_file)
 
     with open(vcap_application_filename) as data_file:
         VCAP_APPLICATION = json.load(data_file)
-    print VCAP_SERVICES
-    print "\n"
-    print VCAP_APPLICATION
     return VCAP_SERVICES, VCAP_APPLICATION
 
 
 def generate_appdy_statement():
     VCAP_SERVICES, VCAP_APPLICATION = get_vcap_args()
-    print "testing\n"
-    print VCAP_SERVICES
-    print "testing1\n"
-    print VCAP_APPLICATION
-    '''
+
     extension_name = "appdynamics"
     controllerHostName = VCAP_SERVICES["appdynamics"][0]["credentials"]["host-name"]
     controllerPort = VCAP_SERVICES["appdynamics"][0]["credentials"]["port"]
@@ -52,7 +41,7 @@ def generate_appdy_statement():
         applicationName: '%s',tierName: '%s',nodeName: '%s'});""" % (extension_name, controllerHostName, controllerPort, accountName, accountAccessKey, applicationName, tierName, nodeName)
 
     print require_statement
-    '''
+    
 generate_appdy_statement()
 
 '''
