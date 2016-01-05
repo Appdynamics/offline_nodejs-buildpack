@@ -84,3 +84,9 @@ install_npm() {
     fi
   fi
 }
+
+
+install_appdynamics() {
+  echo "Downloading and installing AppDynamics Related Jars"
+  npm install appdynamics  
+}
