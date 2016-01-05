@@ -11,6 +11,9 @@ import logging
 
 build_dir = sys.argv[1]
 
+VCAP_SERVICES = ''
+VCAP_APPLICATION = ''
+
 def get_vcap_args():
     vcap_services_filename = "_vcap_services.txt"
     vcap_application_filename = "_vcap_application.txt"
@@ -22,13 +25,12 @@ def get_vcap_args():
 
     with open(vcap_application_filename) as data_file:
         VCAP_APPLICATION = json.load(data_file)
-    
-    return VCAP_SERVICES, VCAP_APPLICATION
 
 
 def generate_appdy_statement():
-    print "testing"
+    print "testing\n"
     print VCAP_SERVICES
+    print "testing1\n"
     print VCAP_APPLICATION
     '''
     extension_name = "appdynamics"
@@ -46,10 +48,6 @@ def generate_appdy_statement():
 
     print require_statement
     '''
-
-
-VCAP_SERVICES, VCAP_APPLICATION = get_vcap_args()
-generate_appdy_statement()
 
 
 '''
