@@ -40,6 +40,7 @@ update_server_appd() {
   echo $VCAP_SERVICES
   echo $VCAP_APPLICATION
   LEN=$(echo ${#VCAP_SERVICES})
+  echo $LEN
   if [ $LEN -le 2 ]; then
     return
   local build_dir=${1:-}
