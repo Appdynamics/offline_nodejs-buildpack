@@ -100,7 +100,6 @@ install_bins() {
   else
     warn_node_engine "$node_engine"
     install_nodejs "$node_engine" "$BUILD_DIR/.heroku/node"
-    #install_appdynamics_nodejs "$node_engine" "$BUILD_DIR/.appdynamics/node"
     install_npm "$npm_engine" "$BUILD_DIR/.heroku/node"
     install_appdynamics "npm_engine"
   fi
@@ -141,15 +140,6 @@ build_dependencies() {
 
 header "Building dependencies"
 build_dependencies | output "$LOG_FILE"
-
-#build_appd_dependencies() {
-#  install_appd_modules "$BUILD_DIR"
-#}
-
-
-#header "Building Appdynamics dependencies"
-#build_appd_dependencies | output "$LOG_FILE"
-
 
 cache_build() {
   local cache_directories=$(get_cache_directories)
