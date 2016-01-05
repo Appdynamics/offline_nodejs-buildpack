@@ -27,6 +27,8 @@ def get_vcap_args():
 
 
 def generate_appdy_statement():
+    print VCAP_SERVICES
+    print VCAP_APPLICATION
     extension_name = "appdynamics"
     controllerHostName = VCAP_SERVICES["appdynamics"][0]["credentials"]["host-name"]
     controllerPort = VCAP_SERVICES["appdynamics"][0]["credentials"]["port"]
