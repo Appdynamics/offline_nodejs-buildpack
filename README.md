@@ -11,8 +11,9 @@ Additional documentation can be found at the [CloudFoundry.org](http://docs.clou
 This buildpack will get used if you have a `package.json` file in your project's root directory.
 
 ```bash
-cf push my_app -b https://github.com/cloudfoundry/buildpack-nodejs.git
+cf push my_app -b https://github.com/appdynamics/buildpack-nodejs.git
 ```
+
 
 ## Disconnected environments
 To use this buildpack on Cloud Foundry, where the Cloud Foundry instance limits some or all internet activity, please read the [Disconnected Environments documentation](https://github.com/cf-buildpacks/buildpack-packager/blob/master/doc/disconnected_environments.md).
@@ -28,6 +29,16 @@ npm install # vendors into /node_modules
 ```
 
 ```cf push``` uploads your vendored dependencies.
+
+```
+AppDynamics related dependences are taken care in build pack. 
+User need **not** to separately run the command.
+
+----------
+
+    npm install appdynamics@<version>
+
+```
 
 ### Additional extensions
 In cached mode, [use the semver node_module](bin/compile#L30-32) (as opposed to http://semver.io) to resolve the correct node version. The semver.io service has an additional preference for stable versions not present in the node module version. We wrap the node module using [lib/version_resolver.js](lib/version_resolver.js) to add back this functionality.
@@ -61,7 +72,7 @@ In cached mode, [use the semver node_module](bin/compile#L30-32) (as opposed to 
 
 ## Supported binary dependencies
 
-The buildpack only supports the stable patches for each dependency listed in the [manifest.yml](manifest.yml) and [releases page](https://github.com/cloudfoundry/nodejs-buildpack/releases).
+The buildpack only supports the stable patches for each dependency listed in the [manifest.yml](manifest.yml) and [releases page](https://github.com/appdynamics/nodejs-buildpack/releases).
 
 
 If you try to use a binary that is not currently supported, staging your app will fail and you will see the following error message:
