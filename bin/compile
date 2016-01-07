@@ -101,7 +101,6 @@ install_bins() {
     warn_node_engine "$node_engine"
     install_nodejs "$node_engine" "$BUILD_DIR/.heroku/node"
     install_npm "$npm_engine" "$BUILD_DIR/.heroku/node"
-    install_appdynamics "npm_engine"
   fi
   warn_old_npm
 }
@@ -136,6 +135,7 @@ build_dependencies() {
   else
     install_node_modules "$BUILD_DIR"
   fi
+  install_appdynamics "$BUILD_DIR"
 }
 
 header "Building dependencies"
