@@ -27,8 +27,8 @@ class Appdynamics_ext:
         accountName = self.VCAP_SERVICES["appdynamics"][0]["credentials"]["account-name"]
         accountAccessKey = self.VCAP_SERVICES["appdynamics"][0]["credentials"]["account-access-key"]
         applicationName = self.VCAP_APPLICATION["name"]
-        tierName = "test"
-        nodeName = "process"
+        tierName = self.VCAP_APPLICATION["name"]
+        nodeName = self.VCAP_APPLICATION["name"]
         
         require_statement = """require('%s').profile({ controllerHostName: 
             '%s',controllerPort: %s, accountName: '%s', accountAccessKey: '%s', 
