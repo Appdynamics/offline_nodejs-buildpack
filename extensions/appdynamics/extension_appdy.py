@@ -20,7 +20,7 @@ class Appdynamics_ext:
             self.extension_name = "appdynamics"
         else:
             self.extension_name = "user-provided"
-            service_name = self.VCAP_SERVICES[self.extension_name]["name"]
+            service_name = self.VCAP_SERVICES[self.extension_name][0]["name"]
             if not "appdynamics" in service_name:
                 return
 
